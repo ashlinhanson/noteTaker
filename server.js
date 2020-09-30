@@ -2,29 +2,25 @@ const express = require("express");
 const path = require("path");
 const fs = require("fs");
 
+// preps Express to be used
 const app = express();
-var PORT = 8080;//dont forget to change this for heroku. process.env.PORT || 9080
+const PORT = process.env.PORT || 8080;
 
+// prepping the express app to handle the data that will be input
 app.use(express.urlencoded({ extended : true }));
 app.use(express.json());
 
-
-app.get("/", function(req, res){
-    res.sendFile(path.join(__dirname, "index.html"))
+ //--------HTML Routes---------
+// gets the notes.html file
+app.get("/notes", function(req, res){
+    res.sendFile(path.join(__dirname, "/public/notes.html"))
+});
+// gets the index.html file
+app.get("*", function(req, res){
+    res.sendFile(path.join(__dirname, "/public/index.html"));
 });
 
-app.get("/api/notes", function(req, res){
-    return res.join(notes);
-});
-
-app.get("/api/notes/:note", function(req, res){
-    var chosenNote = req.params.notes;
-    console.log(chosenNote);
-
-    for(var i = 0; i < notes.length; i++) {
-        if (chosenNote === notes[i].routeName) {
-        return res.json(notes[i]);
-        }
-    }
-    return res.join(false);
+// Activates the server to begin listening
+app.listen(PORT, () => {
+    console.log("App is listening on PORT: " + PORT);
 });
