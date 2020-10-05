@@ -20,21 +20,35 @@ app.get("/notes", function(req, res){
     res.sendFile(path.join(__dirname, "/public/notes.html"))
 });
 // gets the index.html file
-app.get("*", function(req, res){
-    res.sendFile(path.join(__dirname, "/public/index.html"));
-});
+// app.get("*", function(req, res){
+//     res.sendFile(path.join(__dirname, "/public/index.html"));
+// });
 
-app.post(".api/notes", function(req, res){
-    const newNote = {
+//API route
+app.get("/api/notes", function(req, res){
+    return res.json(notesArr);
+})
+
+app.post("/api/notes", function(req, res){
+    const addNote = {
         id : uuid.v4(),
         title : req.body.title,
         text : req.body.text
     }
-    notesArr.push(newNotes);
+    notesArr.push(addNote);
     return notesArr;
 });
 
-app.delete("")
+app.delete("/api/notes/:id", function(req, res){
+    let noteId = req.params.id;
+
+    for (let i = 0; i < notesArr.length; i++){
+        if (noteId === notesArr[i].id){
+            notesArr.splice(i, 1);
+            return notesArr;
+        };
+    };
+});
 
 // Activates the server to begin listening
 app.listen(PORT, () => {
