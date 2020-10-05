@@ -1,5 +1,9 @@
-### Note Taker 
+# Note Taker 
  This is a server hosted note taking web application. You can save, review, and delete your notes as well. 
+
+ ## Deployed Link
+  https://note-taker78745.herokuapp.com/
+
  ## Table of Contents  
  * [Instructions for Use](#Instructions-for-Use) ) 
  * [Questions](#Questions) 
