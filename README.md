@@ -5,7 +5,7 @@
   https://note-taker78745.herokuapp.com/
 
  ## Table of Contents  
- * [Instructions for Use](#Instructions-for-Use) ) 
+ * [Instructions for Use](#Instructions-for-Use) 
  * [Questions](#Questions) 
  * [License](#License) 
  ## Instructions for Use 
