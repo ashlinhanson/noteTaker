@@ -26,7 +26,7 @@ app.get("/notes", function(req, res){
 
 //API route
 app.get("/api/notes", function(req, res){
-    return res.json(notesArr);
+    res.json(notesArr);
 })
 
 app.post("/api/notes", function(req, res){
@@ -36,7 +36,7 @@ app.post("/api/notes", function(req, res){
         text : req.body.text
     }
     notesArr.push(addNote);
-    return notesArr;
+    res.json(notesArr);
 });
 
 app.delete("/api/notes/:id", function(req, res){
@@ -45,7 +45,7 @@ app.delete("/api/notes/:id", function(req, res){
     for (let i = 0; i < notesArr.length; i++){
         if (noteId === notesArr[i].id){
             notesArr.splice(i, 1);
-            return notesArr;
+            res.json(notesArr);
         };
     };
 });
